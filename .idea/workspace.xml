@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0cd8eef-8471-4e62-bb25-1763f21a7bd6" name="Changes" comment="22-05-2023 18:24">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/allmessages.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/allmessages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/messages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/solvedCrimeReports.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/solvedCrimeReports.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbfile/epolice.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dbfile/epolice.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/6473a77c68b872.94646591.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image/6473a77c68b872.94646591.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/6473b0e8de5159.81612331.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/6473b0e8de5159.81612331.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/6473b0fa6bc356.94129340.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image/6473b0fa6bc356.94129340.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/allmessages.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/allmessages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/messages.php" afterDir="false" />
-    </list>
+    <list default="true" id="f0cd8eef-8471-4e62-bb25-1763f21a7bd6" name="Changes" comment="22-05-2023 18:24" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,7 +111,7 @@
       <workItem from="1686071683594" duration="4877000" />
       <workItem from="1686214949949" duration="1688000" />
       <workItem from="1686329544183" duration="472000" />
-      <workItem from="1686330019955" duration="84000" />
+      <workItem from="1686330019955" duration="388000" />
     </task>
     <task id="LOCAL-00001" summary="17-05-2023 17:03">
       <created>1684335798793</created>

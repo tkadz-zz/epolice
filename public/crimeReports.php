@@ -37,7 +37,6 @@
                         </thead>
                         <tbody>
                         <?php
-                        $unsolved = 1;
                         $n = new Userview();
                         $n->viewMyCrimeReports($_SESSION['id']);
                         ?>
