@@ -317,7 +317,12 @@ class Model extends Dbh{
     }
 
     protected function GetCrimesBySolvability($solvability){
-        $sql = "SELECT * FROM crimeReports WHERE solved=? ORDER BY id DESC";
+        if($solvability == 3) {
+            $sql = "SELECT * FROM crimeReports WHERE solved=? ORDER BY id DESC";
+        }else{
+            $solvability = 3;
+            $sql = "SELECT * FROM crimeReports WHERE solved !=? ORDER BY id DESC";
+        }
         $stmt = $this->con()->prepare($sql);
         $stmt->execute([$solvability]);
         return $stmt->fetchAll();

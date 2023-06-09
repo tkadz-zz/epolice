@@ -37,7 +37,7 @@
                         </thead>
                         <tbody>
                         <?php
-                        $unsolved = 0;
+                        $unsolved = 3;
                         $n = new Userview();
                         $n->viewAllCrimes($unsolved);
                         ?>
