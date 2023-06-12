@@ -482,6 +482,13 @@ class Userview extends Model {
 
 
     public function viewTipOffPublic(){
+        if(isset($_SESSION['id'])){
+            $directory = '../';
+            $userID = $_SESSION['id'];
+        }else{
+            $directory='';
+            $userID = 0;
+        }
         ?>
         <div>
             <div class="pt-4 pb-2">
@@ -489,8 +496,8 @@ class Userview extends Model {
                 <p class="text-center small">Provide an anonymous Tip-Off </p>
             </div>
 
-            <form class="row g-3 needs-validation" novalidate method="POST" action="includes/insert.inc.php">
-
+            <form class="row g-3 needs-validation" novalidate method="POST" action="<?= $directory ?>includes/insert.inc.php">
+                <input type="text" name="userID" value="<?= $userID ?>" hidden>
 
                 <div class="col-6">
                     <label for="yourLoginID" class="form-label">National-ID (optional)</label>
@@ -577,7 +584,9 @@ class Userview extends Model {
         $defaultContr = new DefaultContr();
         $rows = $this->GetTipByID($id);
         if(count($rows) > 0){
-            $this->updateTipOffStatus($id);
+            if($_SESSION['role'] == 'admin'){
+                $this->updateTipOffStatus($id);
+            }
             ?>
             <div class="card">
                 <div class="card-body">
@@ -772,6 +781,30 @@ class Userview extends Model {
                 <td><?= $row['surname'] ?></td>
                 <td><?= $defaultContr->dateTimeToDay($row['dateAdded']) ?></td>
                 <td><a href="mostWantedProfile.php?id=<?= $row['id'] ?>">View</a></td>
+            </tr>
+            <?php
+        }
+    }
+
+    public function viewAllMyTipsOff($userID){
+        $defaultContr = new DefaultContr();
+        $rows = $this->GetAllTipsOffByUserID($userID);
+        $s = 0;
+        foreach ($rows as $row){
+            if($row['readStatus'] == 0){
+                $read = 'Yes';
+                $co = 'success';
+            }else{
+                $read = 'No';
+                $co = 'danger';
+            }
+            ?>
+            <tr>
+                <td><?= $s+=1 ?></td>
+                <td><?= $row['surname'] .' '. $row['name'] ?></td>
+                <td><?= $defaultContr->dateTimeToDay($row['dateAdded']) ?></td>
+                <td><span class="badge  bg-<?= $co ?>"> <?= $read ?></span></td>
+                <td><a href="mytipoff.php?id=<?= $row['id'] ?>">More</a></td>
             </tr>
             <?php
         }

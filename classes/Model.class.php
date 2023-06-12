@@ -141,10 +141,11 @@ class Model extends Dbh{
         if(!$stmt->execute([$id])){
             $defaultContr->opps();
         }else{
+            $role = $_SESSION['role'];
             $_SESSION['type'] = 's';
             $_SESSION['err'] = 'Tip-Off Report Deleted';
             echo "<script type='text/javascript'>
-                            window.location='../admin/tipsoff.php';
+                            window.location='../$role/tipsoff.php';
                         </script>";
         }
     }
@@ -206,20 +207,28 @@ class Model extends Dbh{
         }
     }
 
-    protected function addTipOff($name, $surname, $nationalID, $tip){
+    protected function addTipOff($name, $surname, $nationalID, $tip, $userID){
         $defaultContr = new DefaultContr();
         $unread = 1;
-        $today= date('Y-m-d : H:i:s');
-        $sql = "INSERT INTO tipsOff(name, surname, nationalID, tipoff, readStatus, dateAdded) VALUES (?,?,?,?,?,?)";
+        $today = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO tipsOff(userID, name, surname, nationalID, tipoff, readStatus, dateAdded) VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->con()->prepare($sql);
-        if(!$stmt->execute([$name, $surname, $nationalID, $tip, $unread, $today])){
+        if(!$stmt->execute([$userID, $name, $surname, $nationalID, $tip, $unread, $today])){
             $defaultContr->opps();
         }else{
-            $_SESSION['type'] = 's';
-            $_SESSION['err'] = 'Tip-Off has been sent successfully';
-            echo "<script type='text/javascript'>
-                    window.location='../signin.php';
+            if($userID == 0) {
+                $_SESSION['type'] = 's';
+                $_SESSION['err'] = 'Tip-Off has been sent successfully';
+                echo "<script type='text/javascript'>
+                    history.back(-1);
                 </script>";
+            }else{
+                $_SESSION['type'] = 's';
+                $_SESSION['err'] = 'Tip-Off has been sent successfully';
+                echo "<script type='text/javascript'>
+                    window.location='../public/tipsoff.php';
+                </script>";
+            }
         }
     }
 
@@ -299,6 +308,13 @@ class Model extends Dbh{
         $sql = "SELECT * FROM mostWanted ORDER BY id DESC";
         $stmt = $this->con()->prepare($sql);
         $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    protected function GetAllTipsOffByUserID($userID){
+        $sql = "SELECT * FROM tipsOff WHERE userID=? ORDER BY readStatus, id DESC";
+        $stmt = $this->con()->prepare($sql);
+        $stmt->execute([$userID]);
         return $stmt->fetchAll();
     }
 

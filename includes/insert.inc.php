@@ -61,9 +61,10 @@ if(isset($_POST['btn_add_tipoff'])){
     $surname = $_POST['surname'];
     $nationalID = $_POST['nationalID'];
     $tip = $_POST['tip'];
+    $userID = $_POST['userID'];
     try {
         $n = new Usercontr();
-        $n->addTipOff($name, $surname, $nationalID, $tip);
+        $n->addTipOff($name, $surname, $nationalID, $tip, $userID);
     }catch (TypeError $e){
         echo 'ERROR: ' . $e->getMessage();
     }

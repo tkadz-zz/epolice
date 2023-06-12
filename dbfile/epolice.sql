@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 08, 2023 at 11:19 AM
+-- Generation Time: Jun 12, 2023 at 08:29 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -134,8 +134,8 @@ CREATE TABLE `crimeReports` (
 --
 
 INSERT INTO `crimeReports` (`id`, `caseID`, `reportedID`, `addedBy`, `compliantName`, `compliantSurname`, `complaintID`, `complaintDob`, `complaintGender`, `complaintAddress`, `suspectName`, `suspectSurname`, `suspectDob`, `suspectGender`, `suspectAddress`, `incidentCategory`, `incidentAddress`, `IncidentDateTime`, `inceidentDescription`, `solved`, `dateAdded`, `lastUpdated`) VALUES
-(3, 'vG6ZdVhkc0uu', 123, 'NGWARU WIRIRANAI', 'dwq', 'wqd', 'wqd', '2023-05-31', 'MALE', 'wefwe', 'bfda', 'dsv', '2023-05-31', 'MALE', 'wefwefwe', 'wqdwqd', 'wqdqwd', '2023-06-07T19:42', 'dsvsdvsdvw 43t4334', 2, '2023-06-06 19:41:14', '2023-06-06 18:27:05'),
-(4, 'G8s1Zk64vUMu', 123, 'MAPUNZA PANASHE', 'PANASHE', 'MAPUNZA', 'admin', '2023-06-01', 'FEMALE', 'qfcr', 'QFqfe', 'fwq', '2023-06-02', 'FEMALE', 'c32', 'qwf', 'qwf', '2023-06-06T22:54', 'wqfwq', 1, '2023-06-06 19:54:49', '2023-06-08 09:15:21');
+(3, 'vG6ZdVhkc0uu', 123, 'NGWARU WIRIRANAI', 'dwq', 'wqd', 'wqd', '2023-05-31', 'MALE', 'wefwe', 'bfda', 'dsv', '2023-05-31', 'MALE', 'wefwefwe', 'wqdwqd', 'wqdqwd', '2023-06-07T19:42', 'dsvsdvsdvw 43t4334', 3, '2023-06-06 19:41:14', '2023-06-09 17:04:43'),
+(4, 'G8s1Zk64vUMu', 123, 'MAPUNZA PANASHE', 'PANASHE', 'MAPUNZA', 'admin', '2023-06-01', 'FEMALE', 'qfcr', 'QFqfe', 'fwq', '2023-06-02', 'FEMALE', 'c32', 'qwf', 'qwf', '2023-06-06T22:54', 'wqfwq', 3, '2023-06-06 19:54:49', '2023-06-09 17:43:50');
 
 -- --------------------------------------------------------
 
@@ -224,6 +224,7 @@ INSERT INTO `public` (`id`, `userID`, `name`, `secondName`, `surname`, `national
 
 CREATE TABLE `tipsOff` (
   `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `name` varchar(225) NOT NULL,
   `surname` varchar(225) NOT NULL,
   `nationalID` varchar(225) NOT NULL,
@@ -237,10 +238,12 @@ CREATE TABLE `tipsOff` (
 -- Dumping data for table `tipsOff`
 --
 
-INSERT INTO `tipsOff` (`id`, `name`, `surname`, `nationalID`, `tipoff`, `readStatus`, `dateAdded`, `lastUpdated`) VALUES
-(1, 'vfrewf', 'vfewfew', '1323434t53', 'hgrggtrgtrgtrgtrgrg', 1, '2023-05-28 19:14:43', '2023-05-28 18:26:45'),
-(3, 'dsvdsv', 'vdsvdsvds', 'vsdvdsv', 'sdvdsvrwefwefewfewfewf', 0, '2023-05-28 : 19:36:45', '2023-05-28 18:25:58'),
-(4, '3rfw', 'sdfdsf', '3r33', 'sdfdsfsadasdsdsadsad', 1, '2023-06-03 : 20:14:36', '2023-06-03 18:14:36');
+INSERT INTO `tipsOff` (`id`, `userID`, `name`, `surname`, `nationalID`, `tipoff`, `readStatus`, `dateAdded`, `lastUpdated`) VALUES
+(1, 0, 'vfrewf', 'vfewfew', '1323434t53', 'hgrggtrgtrgtrgtrgrg', 1, '2023-05-28 19:14:43', '2023-05-28 18:26:45'),
+(3, 0, 'dsvdsv', 'vdsvdsvds', 'vsdvdsv', 'sdvdsvrwefwefewfewfewf', 0, '2023-05-28 19:36:45', '2023-06-12 06:19:47'),
+(4, 0, '3rfw', 'sdfdsf', '3r33', 'sdfdsfsadasdsdsadsad', 1, '2023-06-03 20:14:36', '2023-06-12 06:19:51'),
+(5, 0, 'PANASHE', 'MAPUNZA', 'regre', 'fbfdsbfvfdsvsfdsfdsfds', 0, '2023-06-12 08:06:18', '2023-06-12 06:27:51'),
+(8, 0, 'bdbfdb', 'fbfdbfdb', 'bfbfd', 'dffgregreregregregreg', 1, '2023-06-12 08:17:48', '2023-06-12 06:20:09');
 
 -- --------------------------------------------------------
 
@@ -283,9 +286,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `loginID`, `password`, `role`, `lastLogin`, `joined`, `status`, `lastUpdated`) VALUES
-(1, 'ADMIN', '$2y$10$l0qigAWpY2xIsxXiZAzgjuFvxkMfI/FfzqutvN8DhgdSdMOHfitbG', 'admin', '2023-06-08 11:01:46', '2022-11-07 05:11:20', 1, '2023-06-08 09:01:46'),
-(123, 'PKADZ', '$2y$10$vEVjK4rTqKWd0IkybTdEkexFxEV9lpWdJQKhE7IiThvT6ghm/PV5m', 'public', '2023-06-08 11:16:04', '2023-05-28 15:59:13', 1, '2023-06-08 09:16:04'),
-(126, 'USER1', '$2y$10$C3tD2S6nnkAOLlM4X21XfeWNbhBHHcK5Ifonzg2D9jDaYWgoKwyMa', 'public', '2023-05-28 16:34:39', '2023-05-28 16:34:38', 1, '2023-05-28 14:35:02'),
+(1, 'ADMIN', '$2y$10$l0qigAWpY2xIsxXiZAzgjuFvxkMfI/FfzqutvN8DhgdSdMOHfitbG', 'admin', '2023-06-12 08:27:30', '2022-11-07 05:11:20', 1, '2023-06-12 06:27:30'),
+(123, 'PKADZ', '$2y$10$vEVjK4rTqKWd0IkybTdEkexFxEV9lpWdJQKhE7IiThvT6ghm/PV5m', 'public', '2023-06-12 08:28:02', '2023-05-28 15:59:13', 1, '2023-06-12 06:28:02'),
+(126, 'USER1', '$2y$10$C3tD2S6nnkAOLlM4X21XfeWNbhBHHcK5Ifonzg2D9jDaYWgoKwyMa', 'public', '2023-06-09 19:44:11', '2023-05-28 16:34:38', 1, '2023-06-09 17:44:11'),
 (127, '12345', '$2y$10$.TQGdqa0eTotNa43NPIho.n2IjY9XGA6VURIVXRWwqSwJcM.x89Zq', 'public', '2023-05-28 22:00:23', '2023-05-28 21:56:31', 1, '2023-05-28 20:00:23'),
 (131, 'ADMIN2', '$2y$10$42rv.5uyzud/WMcr70weMu0NsDRONt18/Y.BP/8jf3nxklXuwlNbG', 'admin', '2023-06-03 21:15:39', '2023-05-29 07:57:01', 1, '2023-06-03 19:15:39');
 
@@ -424,7 +427,7 @@ ALTER TABLE `public`
 -- AUTO_INCREMENT for table `tipsOff`
 --
 ALTER TABLE `tipsOff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `userRoles`

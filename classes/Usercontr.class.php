@@ -45,9 +45,9 @@ class Usercontr extends Model{
         parent::updateCrimeStatus($status, $caseID);
     }
 
-    public function addTipOff($name, $surname, $nationalID, $tip)
+    public function addTipOff($name, $surname, $nationalID, $tip, $userID)
     {
-        parent::addTipOff($name, $surname, $nationalID, $tip);
+        parent::addTipOff($name, $surname, $nationalID, $tip, $userID);
     }
 
     public function addCrime($reportedUserID, $iaddress, $idatetime, $idescription, $cNationalID, $cName, $cSurname, $cGender, $cdob, $caddress, $sName, $sSurname, $sGender, $sdob, $saddress, $icategory)
