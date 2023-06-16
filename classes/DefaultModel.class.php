@@ -214,7 +214,7 @@ class DefaultModel extends Dbh
                 if (count($rows) > 0) {
                     //if loginID already exist in database, do not create account, redirect user to previous page
                     $_SESSION['type'] = 'w';
-                    $_SESSION['err'] = 'LoginID / Student ID is not available. Please Choose another';
+                    $_SESSION['err'] = 'LoginID is already taken. Please Choose another';
                     echo "<script type='text/javascript'>
                         history.back(-1);
                       </script>";

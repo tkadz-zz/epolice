@@ -880,10 +880,14 @@ class Userview extends Model {
         $s = 0;
         foreach ($crimeRows as $crimeRow){
             $reporterUserRows = $defaultContr->GetUserByID($crimeRow['reportedID']);
-            if($reporterUserRows[0]['role'] == 'public'){
-                $visibility = 'Extenal';
+            if(count($reporterUserRows) > 0) {
+                if ($reporterUserRows[0]['role'] == 'public') {
+                    $visibility = 'External';
+                } else {
+                    $visibility = 'Internal';
+                }
             }else{
-                $visibility = 'Internal';
+                $visibility = 'External';
             }
 
             if($crimeRow['solved'] == 0){
